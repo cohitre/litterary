@@ -1,0 +1,12 @@
+#main-content
+  = error_messages_for 'user'
+  %fieldset
+    - form_for :user, :url => signup_path do |f| 
+      %h1 Join litterary!
+      
+      %p= f.label_text(:login, :label => 'Desired login:')
+      
+      %p= f.label_password(:password, :label => 'Choose password')
+      %p= f.label_password(:password_confirmation, :label => 'Confirm password')
+      
+      %p= f.save('Signup')

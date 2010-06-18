@@ -1,0 +1,9 @@
+- sidebar do
+  %h3 Quick Actions
+  %ul
+    %li= link_to 'Create document', new_account_note_path
+#main-content
+  %h1
+    = link_to 'Dashboard', account_path
+    > Documents
+  = notes_list(current_user.notes)

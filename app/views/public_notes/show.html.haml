@@ -1,0 +1,20 @@
+- user_message(@note.user == current_user) do
+  This is your note.
+  = link_to 'edit', edit_account_note_path(@note)
+
+- sidebar do
+  %h3= h(@note.user.login)
+  = image_tag(@note.user.avatar.url(:medium))
+
+#main-content
+  %h1= note_title @note
+  #note-text><
+    :preserve
+      #{h @note.current.body}
+
+  %h2 Comments
+  #note-comments= comments_list(@note.comments)
+  - if current_user?
+    - form_for :comment, :url => note_comments_path(@note) do |f|
+      = f.label_text_area(:message, :rows => 5)
+      = f.submit

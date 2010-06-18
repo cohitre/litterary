@@ -1,0 +1,19 @@
+- user_message(@user == current_user) do
+  This is your page
+  = link_to 'edit your information', edit_account_path
+  
+- sidebar do
+  = image_tag(@user.avatar.url(:medium))
+  %dl
+    %dt Name
+    %dd== #{@user.name} #{@user.lastname}
+
+    %dt Member since
+    %dd== #{time_ago_in_words @user.created_at} ago
+
+#main-content
+  %h1= h(@user.login)
+  #user-description= safe_simple_format(@user.description)
+
+  %h2 Documents
+  = notes_list(@user.notes)

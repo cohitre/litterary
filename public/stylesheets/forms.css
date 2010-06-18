@@ -1,0 +1,15 @@
+.input-field input {
+  border: 1px solid #888888;
+  padding: 3px; }
+.input-field label {
+  display: block;
+  margin: 5px 0px 2px 0; }
+
+.input-submit {
+  margin-top: 5px;
+  padding-top: 5px; }
+  .input-submit input {
+    border: 1px solid #888888; }
+
+.input-check-box label {
+  display: inline; }

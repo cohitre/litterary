@@ -1,0 +1,4 @@
+#flash
+  - [:notice, :error, :warning].each do |s|
+    - if false && flash.has_key?(s)
+      %div{:class => s}= flash[s]

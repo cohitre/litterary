@@ -1,0 +1,131 @@
+=content_section
+  width: 900px
+  margin: 0 auto
+  clear: both
+  
+html
+  height: 100%
+  background-color: #F1F1F1
+  position: relative
+  
+body
+  margin: 0
+  padding: 0
+  font-family: Verdana, Arial, Helvetica, sans-serif
+  font-size: 12px
+  color: #AAA
+
+a
+  color: #2865a0
+  text-decoration: underline
+  &:hover
+    color: #555
+    text-decoration: none
+
+em
+  font-style: italic
+
+strong
+  font-weight: bold
+
+#navigation
+  +content_section
+  height: 50px
+  #global-links
+    float: left
+  #user-links
+    float: right
+  li
+    display: inline
+    line-height: 50px
+    a
+      display: inline-block
+
+h1
+  font-size: 1.5em
+  line-height: 2em
+
+#user-message
+  +content_section
+  margin-bottom: 10px
+
+#content
+  +content_section
+  background-color: #fafafa
+  border: 1px solid #ddd
+  color: #555555
+  position: relative
+  padding: 3px 0
+  h2
+    font-size: 1.2em
+
+#sidebar
+  font-size: 1em
+  margin: 5px
+  position: absolute
+  width: 140px
+  h3
+    padding-bottom: 3px
+    font-size: 1.2em
+  ul
+    padding-bottom: 10px
+    li
+      line-height: 1.2em
+  dl
+    dt
+      display: block
+      margin-top: 5px
+      font-weight: bold
+    dd
+      display: block
+
+#main-content
+  min-height: 300px
+  position: relative
+  margin-left: 150px
+  border-left: 1px solid #ddd
+  padding: 0 10px
+  h2
+    margin-top: 25px
+    border-bottom: 1px solid #dadada
+    line-height: 1.5em
+  &.home 
+    h2
+      margin-top: 0
+      border-bottom: 0 solid #ddd
+    .text-blurb
+      padding: 20px 0
+      line-height: 1.5em
+    ul
+      list-style: disc inside
+.default-message
+  color: #888
+  line-height: 2em
+  font-style: italic
+
+#footer
+  +content_section
+  font-size: 1em
+  text-align: right
+  margin-top: 10px
+  height: 50px
+  line-height: 50px
+.items-list
+  li
+    margin: 10px 0 20px
+    .description
+      line-height: 1.2em
+      margin: 3px 0
+    .item-footer
+      margin: 3px 0
+      color: #888
+  li.user
+    min-height: 50px
+    position: relative
+    padding-left: 65px
+    img
+      display: block
+      position: absolute
+      top: 0
+      left: 0
+    

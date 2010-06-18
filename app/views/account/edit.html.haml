@@ -1,0 +1,13 @@
+#main-content
+  %h1 Update your profile
+  
+  = error_messages_for :user
+  - form_for @user, :url => account_path, :html => {:multipart => true} do |f|
+    .comment
+      %h2 Profile Information
+      = f.label_text :name, :size => 30
+      = f.label_text :lastname, :size => 30, :label => 'Last name'
+      = f.label_text_area :description, :rows => 5, :cols => 40
+
+      = f.label_file :avatar
+      = f.save('Update')
