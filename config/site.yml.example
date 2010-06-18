@@ -1,0 +1,8 @@
+secret-salt: a very long string used for the session
+salt: a very long string used to encode passwords
+paperclip:
+  :storage: !ruby/symbol s3
+  :bucket: bucket to use for the files
+  :s3_credentials:
+    :access_key_id: your access key
+    :secret_access_key: your secret access key
