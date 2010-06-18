@@ -10,7 +10,7 @@ class Note < ActiveRecord::Base
     versions.first
   end
   
-  def current= attributes
+  def current_attributes= attributes
     self.versions.build(attributes)
   end
   
