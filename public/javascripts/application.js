@@ -15,14 +15,13 @@ jQuery.fn.rangeOffset = function(range){
     start: addLengths(startOffset)+range.anchorOffset,
     end: addLengths(endOffset)+range.focusOffset
   }
-  // $.each(contents, function(){
-  //   console.log(this)
-  // });
-  // console.log(range);
 }
 
 $.initialize("#note-text", function(){
   this.bind('textselect', function(event, string, element, range){
-    console.log($(this).rangeOffset(range));
+    var offset = $(this).rangeOffset(range);
+    $.facebox(function(){
+      $.facebox(string);
+    });
   });
 });
