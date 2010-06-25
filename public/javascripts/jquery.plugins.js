@@ -111,3 +111,23 @@ jQuery.initialize = function(selector, callback) {
   });
 }
 
+jQuery.fn.allText = function() {
+  var text = "";
+  this.each(function(){
+    text = text + $(this).text();
+  })
+  return text;
+}
+
+jQuery.fn.rangeOffset = function(range){
+  var contents = this.children();
+  var startOffset = contents.slice(0, contents.index( $(range.anchorNode).parent() ));
+  var endOffset   = contents.slice(0, contents.index( $(range.focusNode).parent() ) );
+
+  var length1 = startOffset.allText().length + range.anchorOffset;
+  var length2 = endOffset.allText().length + range.focusOffset;
+  return {
+    start: Math.min(length1, length2),
+    end: Math.max(length1, length2)
+  }
+}

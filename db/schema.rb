@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100103195533) do
+ActiveRecord::Schema.define(:version => 20100618045332) do
 
   create_table "citations", :force => true do |t|
     t.integer  "version_id"
@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(:version => 20100103195533) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "range_end"
+    t.integer  "range_begin"
   end
 
   create_table "comments", :force => true do |t|

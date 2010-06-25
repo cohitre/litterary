@@ -1,5 +1,6 @@
 class NoteCommentsController < ApplicationController
   before_filter :find_note
+  
   def create
     @note.comments.create(params[:comment].merge({:user => current_user}))
     redirect_to note_url(@note)

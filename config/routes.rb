@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :notes, :controller => 'public_notes' do |note|
-    note.resources 'comments', :controller => 'note_comments'
+    note.resources 'comments', :controller => 'note_comments', :only => [:create]
+    note.resources 'citations', :controller => 'note_citations', :only => [:create, :new]
   end
 end

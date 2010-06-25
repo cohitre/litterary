@@ -1,3 +1,5 @@
+- set_meta('new-citation' => new_note_citation_path(@note))
+
 - user_message(@note.user == current_user) do
   This is your note.
   = link_to 'edit', edit_account_note_path(@note)
@@ -5,12 +7,12 @@
 - sidebar do
   %h3= h(@note.user.login)
   = image_tag(@note.user.avatar.url(:medium))
-
+  %h3 info
+  %ul
+    %li citations: #{@note.citations.count}
 #main-content
   %h1= note_title @note
-  #note-text><
-    :preserve
-      #{h @note.current.body}
+  #note-text><= preserve @note.current.highlighted
 
   %h2 Comments
   #note-comments= comments_list(@note.comments)
