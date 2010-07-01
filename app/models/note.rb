@@ -7,9 +7,9 @@ class Note < ActiveRecord::Base
   has_many :versions , :order => 'created_at DESC'
 
   def current
-    versions.first
+    versions.first || Version.new
   end
-  
+
   def current_attributes= attributes
     self.versions.build(attributes)
   end
