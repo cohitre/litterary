@@ -283,11 +283,10 @@ h1 {
   width: 900px;
   margin: 0 auto;
   clear: both;
-  font-size: 1em;
-  text-align: right;
-  margin-top: 10px;
-  height: 50px;
-  line-height: 50px; }
+  font-size: 1em; }
+  #footer p {
+    text-align: right;
+    margin-top: 10px; }
 
 .items-list li {
   margin: 10px 0 20px; }
