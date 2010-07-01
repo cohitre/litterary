@@ -1,0 +1,16 @@
+h1. litterary
+
+A simple rails app for posting and commenting on simple text documents.
+
+h2. About
+
+I created a first version of this in 2007 to teach myself Javascript. I returned to the code in 2010 and was embarrased to see how ugly it was. 
+
+A production instance of this application is hosted on "http://litterary.com":http://litterary.com and the code can be downloaded from "github":http://github.com/cohitre/litterary.
+
+
+It is open source and released under the terms of the "GNU General Public License v2 (GPL)":http://www.gnu.org/licenses/old-licenses/gpl-2.0.html.
+
+h2. Setting it up
+
+There's a site.yml.example file. Rename it to site.yml and update the attributes as needed.
