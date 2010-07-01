@@ -6,10 +6,6 @@ $.initialize("#note-text", function(){
     
     if ( !range.isCollapsed ) {
       var offset = $(this).rangeOffset(range);
-
-      // var body = $(this).text();
-      // var string = '<span>' + body.substring(0, offset.start) + "</span><span style='color: red;'>" + body.substring(offset.start, offset.end) + '</span>' + body.substring(offset.end);
-      // $(this).html(string);
     
       $.facebox(function(){
         $.get(citationFormUrl, function(form){
