@@ -1,4 +1,4 @@
-$.initialize("#note-text", function(){
+$.initialize("#note-text", function () {
   var citationFormUrl = $("meta[name=new-citation]").attr('content');
   
   this.bind('textselect', function(event, string, element, range){
@@ -21,7 +21,7 @@ $.initialize("#note-text", function(){
   });
 });
 
-$.initialize('.citation', function(){
+$.initialize('.citation', function () {
   this
     .filter(function(){
       return $(this).attr('data-citations') !== "";
@@ -29,4 +29,4 @@ $.initialize('.citation', function(){
     .each(function(index,item){
       $(item).addClass('note-color-'+index%8);
     });
-})
+});

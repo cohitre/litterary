@@ -7,9 +7,11 @@
 - sidebar do
   %h3= h(@note.user.login)
   = image_tag(@note.user.avatar.url(:medium))
-  %h3 info
-  %ul
-    %li citations: #{@note.citations.count}
+  %h3 Highlights
+  %ul#highlights
+    - @note.current.citations.each do |c|
+      %li{'data-highlight-id' => c.id, 'data-range-start' => c.range_begin, 'data-range-end' => c.range_end}
+        = h c.message
 #main-content
   %h1= note_title @note
   #note-text><= preserve @note.current.highlighted

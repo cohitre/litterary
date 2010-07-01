@@ -131,3 +131,13 @@ jQuery.fn.rangeOffset = function(range){
     end: Math.max(length1, length2)
   }
 }
+
+jQuery.fn.dataAttributes = function () {
+  var self = this;
+  var result = {};
+  $.each(arguments, function (index, attribute) {
+    result[attribute] = self.attr('data-'+attribute);
+  });
+  return result;
+}
+
