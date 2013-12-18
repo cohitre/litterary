@@ -43,6 +43,17 @@ class User < ActiveRecord::Base
     ).first
   end
 
+  def full_name?
+    !full_name.blank?
+  end
+
+  def full_name
+    fields = []
+    fields.push(name) if name?
+    fields.push(lastname) if lastname?
+    fields.join(" ")
+  end
+
   protected
 
   def password_required?

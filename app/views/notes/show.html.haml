@@ -1,2 +1,10 @@
-%h4= @note.name
-.well= simple_format h(@note.body)
+.row
+  .col-xs-2
+    %p= link_to @note.user.login, user_path(@note.user.login)
+    - if @note.user.full_name?
+      %p= @note.user.full_name
+  .col-xs-10
+    %h4.panel-title= @note.name
+    .panel-detail Current version: #{time_ago_in_words @note.current.created_at} ago
+    %hr
+    = simple_format h(@note.body)

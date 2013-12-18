@@ -1,13 +1,15 @@
-%dl
-  %dt Name
-  %dd== #{@user.name} #{@user.lastname}
-
-  %dt Member since
-  %dd== #{time_ago_in_words @user.created_at} ago
-
-#main-content
-  %h1= h(@user.login)
-  #user-description= safe_simple_format(@user.description)
-
-  %h2 Documents
-  = notes_list(@user.notes)
+.row
+  .col-xs-2
+    %p= @user.login
+    - if @user.full_name?
+      %p= @user.full_name
+    %p
+      %strong Member since:
+      #{time_ago_in_words(@user.created_at)} ago
+  .col-xs-10
+    - if @user.description?
+      = safe_simple_format(@user.description)
+    - @user.notes.each do |note|
+      .panel-list-item
+        %h4.panel-title= link_to note.name, note_path(note)
+        .panel-detail Current version: #{time_ago_in_words note.current.created_at} ago

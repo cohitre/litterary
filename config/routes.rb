@@ -10,7 +10,7 @@ Litterary::Application.routes.draw do
   root to: 'general#index'
 
   resource :account, controller: 'account', only: [:show, :edit, :update]
-  resources :users, controller: "user", only: [:index, :show]
+  resources :users, controller: "user", only: [:show]
   resources :notes do
     resources :comments, :only => [:create]
     resources :citations, :only => [:create, :new]
