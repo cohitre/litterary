@@ -5,6 +5,7 @@ gem 'rails', '3.2.8'
 gem 'haml'
 gem 'sass'
 
+gem "devise"
 gem "rails_config"
 
 group :development do

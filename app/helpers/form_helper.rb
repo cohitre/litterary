@@ -32,8 +32,8 @@ module FormHelper
       @template.content_tag('div', c, :class => "input-field input-check-box".gsub("_","-")).html_safe
     end
 
-    def save(l, options={})
-      @template.content_tag(:div, self.submit(l, options), :class => 'input-submit').html_safe
+    def save(l)
+      self.submit(l, class: "btn btn-primary")
     end
   end
 end

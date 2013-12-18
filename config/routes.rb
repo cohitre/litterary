@@ -2,7 +2,7 @@ Litterary::Application.routes.draw do
   root to: 'general#index'
   get 'help' => 'general#help'
 
-  match 'logout' => 'session#destroy', as: :logout
+  delete 'logout' => 'session#destroy', as: :logout
   get  'login' => 'session#new', as: :login
   post 'login' => 'session#create'
 
@@ -11,7 +11,7 @@ Litterary::Application.routes.draw do
 
   resource :account, controller: 'account' do
     resources :notes do
-      match 'delete' => 'notes#delete', :as => :delete
+      delete 'delete' => 'notes#delete'
     end
   end
 

@@ -1,8 +1,7 @@
 class SessionController < ApplicationController
   def create
-    user = User.authenticate(params['user']['login'], params['user']['password'])
-    self.current_user = user
-    
+    self.current_user = User.authenticate(params[:user][:login], params[:user][:password])
+
     if current_user?
       flash['notice'] = "Login successful"
       redirect_to account_path
