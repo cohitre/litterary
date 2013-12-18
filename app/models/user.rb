@@ -36,7 +36,11 @@ class User < ActiveRecord::Base
   protected
 
   def self.sha1(pass)
-    salt = Settings[:authentication][:salt] || ENV['PASSWORD_SALT']
+    if Settings[:authentication] && Settings[:authentication][:salt]
+      salt = Settings[:authentication][:salt]
+    else
+      salt = ENV['PASSWORD_SALT']
+    end
     Digest::SHA1.hexdigest("#{salt}--#{pass}")
   end
 
