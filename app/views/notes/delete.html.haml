@@ -3,7 +3,7 @@
   #comments
     %h2 Are you sure you want to delete this document?
     .summary= simple_format h truncate( @note.clean_body , 400 )
-    
-    - form_for @note, :url => account_note_path(@note), :html => {:method => :delete} do |f|
+
+    = form_for @note, :url => account_note_path(@note), :html => {:method => :delete} do |f|
       = f.submit("Delete now")
       = link_to 'cancel', account_note_path(@note)

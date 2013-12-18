@@ -10,7 +10,6 @@ module NotesHelper
   def comment_item comment
     user_link = link_to(comment.user.login, user_path(comment.user.id))
     capture_haml do
-      haml_concat image_tag(comment.user.avatar.url(:small))
       haml_tag :h3, "#{user_link} said #{time_ago_in_words comment.created_at} ago"
       haml_tag :div, safe_simple_format(comment.message), :class => 'description'
     end

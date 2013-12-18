@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
   include LoginSystem
   helper :all
   protect_from_forgery
-  
-  filter_parameter_logging :password
-
 
   def paginate_collection(collection, options = {})
     default_options = {:per_page => 10, :page => 1}

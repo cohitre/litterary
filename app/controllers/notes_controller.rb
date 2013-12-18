@@ -4,7 +4,11 @@ class NotesController < ApplicationController
 
   def index
     @user = current_user
-    @notes = current_user.notes
+    if @user
+      @notes = current_user.notes
+    else
+      @notes = []
+    end
   end
 
   def new

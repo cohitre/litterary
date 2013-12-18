@@ -2,9 +2,10 @@ class AccountController < ApplicationController
   before_filter :login_required, :except => [:new, :create]
 
   def create
-    @user = User.new(params['user'])
+    @user = User.new
     @user.login    = params['user']['login']
     @user.password = params['user']['password']
+    @user.password_confirmation = params[:user][:password_confirmation]
     @user.save
 
     if @user.errors.empty?

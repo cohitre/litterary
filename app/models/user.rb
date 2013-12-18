@@ -19,11 +19,6 @@ class User < ActiveRecord::Base
 
   validates_format_of :login, :with => /\A[A-Za-z0-9_]*\Z/ , :on => :create , :message => 'The login name must be compossed of letters, numbers or underscore characters.'
 
-  has_attached_file :avatar, {
-    :path => ":attachment/:id/:style.:extension",
-    :styles => { :small => "60x60>", :medium=>"140x140" }
-  }.merge(SITE_CONFIG['paperclip'])
-
   attr_protected :password, :login, :created_at
 
   def self.authenticate(login, pass)
@@ -41,7 +36,7 @@ class User < ActiveRecord::Base
   protected
 
   def self.sha1(pass)
-    Digest::SHA1.hexdigest("#{SITE_CONFIG['salt']}--#{pass}--")
+    Digest::SHA1.hexdigest("#{Settings[:authentication][:salt]}--#{pass}--")
   end
 
   def crypt_password

@@ -1,9 +1,8 @@
 - user_message(@user == current_user) do
   This is your page
   = link_to 'edit your information', edit_account_path
-  
+
 - sidebar do
-  = image_tag(@user.avatar.url(:medium))
   %dl
     %dt Name
     %dd== #{@user.name} #{@user.lastname}

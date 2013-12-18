@@ -6,8 +6,8 @@ module FormHelper
   class LitteraryFormBuilder < ActionView::Helpers::FormBuilder
     def labeled_field(field, method, options={})
       l = options.delete :label
-      c = "#{label(method, l)} #{send(field, method, options)}"
-      @template.content_tag('div', c, :class => "input-field input-#{field}".gsub("_","-"))
+      c = "#{label(method, l)} #{send(field, method, options)}".html_safe
+      @template.content_tag('div', c, :class => "input-field input-#{field}".gsub("_","-")).html_safe
     end
 
     def label_text_area(method, options={})
@@ -28,12 +28,12 @@ module FormHelper
 
     def label_check_box(method, options={})
       l = options.delete :label
-      c = "#{check_box(method, options)} #{label(method, l)}"
-      @template.content_tag('div', c, :class => "input-field input-check-box".gsub("_","-"))
+      c = "#{check_box(method, options)} #{label(method, l)}".html_safe
+      @template.content_tag('div', c, :class => "input-field input-check-box".gsub("_","-")).html_safe
     end
 
     def save(l, options={})
-      @template.content_tag(:div, self.submit(l, options), :class => 'input-submit')
+      @template.content_tag(:div, self.submit(l, options), :class => 'input-submit').html_safe
     end
   end
 end

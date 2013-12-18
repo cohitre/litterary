@@ -6,13 +6,8 @@ module UserHelper
     content_for(:user_information, message ) if condition
   end
 
-  def user_image user
-    image_tag user.avatar.url(:small)
-  end
-
   def user_item user
     capture_haml do
-      haml_concat image_tag(user.avatar.url(:small))
       haml_tag :h3, link_to(user.login, user_path(user.login))
       haml_tag :div, safe_simple_format(user.description)
     end
@@ -25,5 +20,4 @@ module UserHelper
       end
     end
   end
-
 end
