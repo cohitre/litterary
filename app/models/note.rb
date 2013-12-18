@@ -3,8 +3,10 @@ class Note < ActiveRecord::Base
 
   has_many :citations, :through => :versions
   has_many :note_comments
-  has_many :comments, :through => :note_comments  
+  has_many :comments, :through => :note_comments
   has_many :versions , :order => 'created_at DESC'
+
+  attr_accessible :name, :current_attributes
 
   def current
     versions.first || Version.new
@@ -13,5 +15,8 @@ class Note < ActiveRecord::Base
   def current_attributes= attributes
     self.versions.build(attributes)
   end
-  
+
+  def body
+    current.body
+  end
 end

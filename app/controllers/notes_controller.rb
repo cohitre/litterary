@@ -26,14 +26,14 @@ class NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    redirect_to account_notes_url
+    redirect_to notes_url
   end
 
   def edit
   end
 
   def update
-    @note.update_attributes(params[:note])
+    @note.update_attributes!(params[:note])
     redirect_to note_url(@note)
   end
 

@@ -1,17 +1,5 @@
-- sidebar do
-  %h3 Documents
-  %ul
-    %li= link_to 'Create Document', new_account_note_path
-    %li= link_to 'Edit Documents' , account_notes_path
-
-  %h3 Account
-  %ul
-    %li= link_to 'Edit your information', edit_account_path
-
-#main-content
-  .user-description
-    %h1 Dashboard
-    #user-description= safe_simple_format(current_user.description)
-
-    %h2== Your Documents (#{link_to 'view all' , account_notes_path})
-    = notes_list(current_user.notes)
+%h3 Documents
+= link_to 'Create Document', new_note_path, class: "btn btn-primary"
+- current_user.notes.each do |note|
+  %h5= link_to note.name, note_path(note)
+  = simple_format h(note.body.slice(0...100))

@@ -1,4 +1,11 @@
-.editor-header= f.label_text :name
-- f.fields_for :current do |v|  
-  = v.text_area :body, :cols => nil, :rows => nil
-.editor-footer= f.submit
+
+.form-group
+  = f.label :name
+  = f.text_field :name, class: "form-control"
+
+= f.fields_for :current do |v|
+  .form-group
+    = v.label :body
+    = v.text_area :body, class: "form-control"
+
+= f.save 'Save'

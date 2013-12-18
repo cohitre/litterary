@@ -2,10 +2,12 @@
 %html
   %head= render :partial => 'layouts/head'
   %body{:id => controller_name, :class => controller.action_name}
-    = render :partial => 'layouts/navigation'
+    .container
+      = render :partial => 'layouts/navigation'
 
-    = render :partial => 'layouts/flash'
-    = yield :user_information
-    #content= yield
+    .container
+      = render :partial => 'layouts/flash'
+      = yield :user_information
+      = yield
     = render :partial => 'layouts/footer'
     = render :partial => 'layouts/javascripts'

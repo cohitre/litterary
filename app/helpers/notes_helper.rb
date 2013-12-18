@@ -24,14 +24,13 @@ module NotesHelper
   end
 
   def note_preview note, owner=false
-    url = owner ? account_note_path(note) : note_path(note)
     capture_haml do
-      haml_tag :h3, link_to(note_title(note), url)
-      haml_tag :div, h(note.current.body.slice(0,400)), :class => 'description'
+      haml_tag :h3, link_to(note_title(note), note_path(note))
+      haml_tag :div, h(note.body.slice(0,400)), :class => 'description'
       haml_tag :div, :class => 'item-footer' do
         haml_tag :p do
           haml_concat "Created #{time_ago_in_words note.created_at} ago"
-          haml_concat " | #{link_to 'edit', edit_account_note_path(note)}" if owner
+          haml_concat " | #{link_to 'edit', edit_note_path(note)}" if owner
         end
       end
     end
