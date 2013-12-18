@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_filter :login_required, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index]
   before_filter :find_note, :only => [:show, :edit, :update, :destroy]
 
   def index
@@ -17,12 +17,7 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.create(params[:note])
-    # @note.update_attribute 'version', Version.create(params[:note][:version].merge(:user => current_user, :note => @note))
     redirect_to note_url(@note)
-  end
-
-  def show
-
   end
 
   def delete
@@ -39,11 +34,11 @@ class NotesController < ApplicationController
 
   def update
     @note.update_attributes(params[:note])
-    # @note.update_attribute 'version', Version.create(params[:note][:version].merge(:user => current_user, :note => @note))
     redirect_to note_url(@note)
   end
 
   private
+
   def find_note
     @note = current_user.notes.find params[:id]
   end

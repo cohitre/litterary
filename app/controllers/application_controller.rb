@@ -1,9 +1,6 @@
 # Filters added to this controller will be run for all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
-require_dependency "login_system"
-
 class ApplicationController < ActionController::Base
-  include LoginSystem
   helper :all
   protect_from_forgery
 

@@ -3,7 +3,7 @@ module ApplicationHelper
   def breadcrumb *args
     return args.join(h(" > "))
   end
-  
+
   def items_list_or_message(items, message, &block)
     if items.empty?
       result = content_tag("p", message, :class => 'default-message')
@@ -19,13 +19,5 @@ module ApplicationHelper
 
   def safe_simple_format text
     simple_format h(text)
-  end
-
-  def current_user?
-    controller.current_user?
-  end
-
-  def current_user
-    controller.current_user
   end
 end
