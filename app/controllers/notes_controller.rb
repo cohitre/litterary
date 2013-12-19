@@ -3,12 +3,7 @@ class NotesController < ApplicationController
   before_filter :find_note, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @user = current_user
-    if @user
-      @notes = current_user.notes
-    else
-      @notes = []
-    end
+    @notes = Note.all
   end
 
   def new

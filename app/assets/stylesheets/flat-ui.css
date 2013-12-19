@@ -206,8 +206,6 @@ body {
 a {
   color: #16a085;
   text-decoration: none;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
 }
 a:hover,
 a:focus {
@@ -445,8 +443,6 @@ pre {
   border-radius: 4px;
   padding: 10px 15px;
   -webkit-font-smoothing: subpixel-antialiased;
-  -webkit-transition: 0.25s linear;
-  transition: 0.25s linear;
 }
 .btn:hover,
 .btn:focus {

@@ -6,8 +6,7 @@
 
     %ul.nav.pull-right
       - if user_signed_in?
-        %li= link_to current_user.login, user_path(current_user.login)
-        %li= link_to 'my account' , account_path
+        %li= link_to current_user.login, account_path
         %li= link_to "log out", destroy_user_session_path
       - else
         %li= link_to 'login' , new_session_path(:user)

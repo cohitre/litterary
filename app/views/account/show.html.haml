@@ -1,5 +1,10 @@
-%h3 Documents
-= link_to 'Create Document', new_note_path, class: "btn btn-primary"
-- current_user.notes.each do |note|
-  %h5= link_to note.name, note_path(note)
-  = simple_format h(note.body.slice(0...100))
+.row
+  .col-xs-2
+    = link_to 'Create Document', new_note_path, class: "btn btn-primary"
+  .col-xs-10
+    - if @user.description?
+      = safe_simple_format(@user.description)
+    - @user.notes.each do |note|
+      .panel-list-item
+        %h4.panel-title= link_to note.name, note_path(note)
+        .panel-detail Current version: #{time_ago_in_words note.current.created_at} ago
