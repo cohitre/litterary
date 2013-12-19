@@ -13,4 +13,5 @@
     .panel-detail.panel-detail-padded
       Updated #{time_ago_in_words @note.current.created_at} ago
     %hr
-    %pre#highlightable.pre-simple= h(@note.body)
+    %pre#highlightable.pre-simple
+      %span= h(@note.body)
