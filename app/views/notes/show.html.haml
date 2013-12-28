@@ -1,4 +1,4 @@
-.row
+.row{reviewer: true, "note-id" => @note.id}
   .col-xs-2
     - if @note.user == current_user
       = link_to 'Edit', edit_note_path(@note), class: "btn btn-primary btn-block"
@@ -13,5 +13,13 @@
     .panel-detail.panel-detail-padded
       Updated #{time_ago_in_words @note.current.created_at} ago
     %hr
-    %pre#highlightable.pre-simple
-      %span= h(@note.body)
+    #document
+      %pre.pre-simple(ng-bind-html="getDocumentHtml()")
+      %form.form.pop.pop-bottom.range-comment-form(name="citationForm" ng-submit="submitComment()" range-comment-form ng-hide="isCommentable()")
+        %input(type="hidden" ng-model="citation.range.start")
+        %input(type="hidden" ng-model="citation.range.end")
+        .form-group
+          %textarea.form-control(ng-model="citation.comment" class="form-control")
+        .form-action
+          %button.btn.btn-primary(type="submit") Comment
+          %a.btn.btn-link(ng-click="cancelRangeComment()") Cancel

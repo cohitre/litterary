@@ -15,4 +15,9 @@ Litterary::Application.routes.draw do
     resources :comments, :only => [:create]
     resources :citations, :only => [:create, :new]
   end
+
+  get "/api/v1/notes/:note_id" => "api/v1/notes#show"
+
+#  post "/api/v1/notes/:note_id/citations" => "NoteCitations#create"
+#  get "/api/v1/notes/:note_id/citations" => "NoteCitations#index"
 end

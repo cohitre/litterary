@@ -5,8 +5,14 @@ class NoteCitationsController < ApplicationController
   end
 
   def create
-    @note.current.citations.create(params[:citation].merge({:user => current_user}))
-    redirect_to note_url(@note)
+    citation_hash = {
+      message: params[:citation][:comment],
+      range_begin: params[:citation][:range][:start],
+      range_end: params[:citation][:range][:end],
+      user: current_user
+    }
+    citation = @note.current.citations.create(citation_hash)
+    render json: citation.to_json
   end
 
   private
