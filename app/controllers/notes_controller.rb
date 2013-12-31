@@ -1,6 +1,10 @@
 class NotesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :find_note, :only => [:show, :edit, :update, :destroy, :delete]
+  before_filter :find_note, :only => [:edit, :update, :destroy, :delete]
+
+  def show
+    @note = Note.find(params[:id])
+  end
 
   def index
     @notes = Note.all
