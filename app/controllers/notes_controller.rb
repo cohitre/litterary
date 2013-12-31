@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
-  before_filter :find_note, :only => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :find_note, :only => [:show, :edit, :update, :destroy, :delete]
 
   def index
     @notes = Note.all
@@ -13,10 +13,6 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.create(params[:note])
     redirect_to note_url(@note)
-  end
-
-  def delete
-    @note = Note.find(params[:note_id])
   end
 
   def destroy

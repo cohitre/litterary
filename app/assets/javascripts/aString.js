@@ -232,11 +232,14 @@ StringRange.prototype.addClass = function (classNames) {
   return this;
 };
 
-StringRange.prototype.removeClass = function (className) {
-  var array = this.attributes.class || []
-    , i = array.indexOf(className);
+StringRange.prototype.removeClass = function (classNames) {
+  var array = this.attributes.class || [];
 
-  i >= 0 && array.splice(i, 1);
+  _.each(classNames.split(" "), function (index, className) {
+    var i = array.indexOf(className);
+    i >= 0 && array.splice(i, 1);
+  });
+
   this.attributes.class = array;
   return this;
 };

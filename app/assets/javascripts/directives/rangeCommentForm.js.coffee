@@ -1,5 +1,9 @@
 angular.module("Litterary").directive "rangeCommentForm", ["NoteCitationsService", (NoteCitationsService) ->
   link: (scope, el) ->
+    scope.$watch "citation", ->
+      if scope.hasActiveHighlight()
+        scope.positionCommentForm(scope, el)
+
     scope.submitComment = ->
       NoteCitationsService.create(scope.note.id, scope.citation).then (result) ->
         scope.highlight(result)
@@ -7,5 +11,5 @@ angular.module("Litterary").directive "rangeCommentForm", ["NoteCitationsService
     scope.cancelRangeComment = ->
       @closeRangeComment()
     scope.closeRangeComment = ->
-      @clearCitation()
+      @blurActiveHighlight()
 ]

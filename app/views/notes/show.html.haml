@@ -1,4 +1,4 @@
-.row{"ng-controller" => "NotesController", reviewer: true, "note-id" => @note.id}
+.row{reviewer: true, "note-id" => @note.id}
   .col-xs-2
     - if @note.user == current_user
       = link_to 'Edit', edit_note_path(@note), class: "btn btn-primary btn-block"
@@ -15,7 +15,7 @@
     %hr
     #document
       %pre.pre-simple(ng-bind-html="getDocumentHtml()")
-      %form.form.pop.pop-bottom.range-comment-form(name="citationForm" ng-submit="submitComment()" range-comment-form ng-hide="isCommentable()")
+      %form.form.pop.pop-top.range-comment-form(name="citationForm" ng-submit="submitComment()" ng-show="hasActiveHighlight()" range-comment-form)
         %input(type="hidden" ng-model="citation.range.start")
         %input(type="hidden" ng-model="citation.range.end")
         .form-group
