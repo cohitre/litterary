@@ -1,11 +1,17 @@
 angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "$sce", (NotesService, $compile, $sce) ->
-  (scope, element, attributes) ->
+  controller: "NotesController"
+  link: (scope, element, attributes, controller) ->
+    noteId = parseInt(attributes.noteId)
+    controller.getNote(noteId).then (note) ->
+      scope.note = note
+      scope.noteString = aString(note.body)
+      for citation in note.citations
+        scope.highlight(citation.range.start, citation.range.end)
+
     selectableBlock = new SelectableTextBlock(element.find("pre"))
     selectableBlock.select (range) ->
       scope.$apply ->
         scope.highlight(range.start, range.end)
-
-    noteId = parseInt(attributes.noteId)
 
     scope.note = null
     scope.noteString = null
@@ -13,12 +19,6 @@ angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "
       scope.citation == undefined
     scope.clearCitation = ->
       scope.citation = undefined
-
-    NotesService.show(noteId).then (note) ->
-      scope.note = note
-      scope.noteString = aString(note.body)
-      for citation in note.citations
-        scope.highlight(citation.range.start, citation.range.end)
 
     scope.getDocumentHtml = ->
       if scope.noteString?

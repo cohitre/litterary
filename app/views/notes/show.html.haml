@@ -1,4 +1,4 @@
-.row{reviewer: true, "note-id" => @note.id}
+.row{"ng-controller" => "NotesController", reviewer: true, "note-id" => @note.id}
   .col-xs-2
     - if @note.user == current_user
       = link_to 'Edit', edit_note_path(@note), class: "btn btn-primary btn-block"
