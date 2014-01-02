@@ -1,7 +1,0 @@
-- if current_user?
-  = form_for :citation, :url => note_citations_path(@note) do |f|
-    %p#selected-text
-    = f.hidden_field :range_begin
-    = f.hidden_field :range_end
-    = f.label_text_area(:message)
-    = f.submit

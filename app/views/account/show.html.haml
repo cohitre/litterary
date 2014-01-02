@@ -17,5 +17,4 @@
         Week
         %span.calendar-number 1
     .col-sm-11
-      .panel-list-item
-        %h4.panel-title= link_to note.name, note_path(note)
+      = NotesIndexItemStilt.new(note: note).to_html

@@ -16,7 +16,11 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = current_user.notes.create(params[:note])
+    if current_user.draft?
+      @note = current_user.draft.update_attributes params[:note]
+    else
+      @note = current_user.draft.create(params[:note])
+    end
     redirect_to note_url(@note)
   end
 

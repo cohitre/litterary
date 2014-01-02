@@ -1,7 +1,4 @@
 .row
   .col-xs-12
     - @notes.each do |note|
-      .panel-detail= note.created_at.strftime("%B %e")
-      .panel-list-item
-        %h4.panel-title= link_to note.name, note_path(note)
-
+      = NotesIndexItemStilt.new(note: note).to_html
