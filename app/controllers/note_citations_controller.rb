@@ -11,7 +11,7 @@ class NoteCitationsController < ApplicationController
       range_end: params[:citation][:range][:end],
       user: current_user
     }
-    citation = @note.current.citations.create(citation_hash)
+    citation = @note.version.citations.create(citation_hash)
     render json: citation.to_json
   end
 

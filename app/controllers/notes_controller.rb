@@ -12,6 +12,7 @@ class NotesController < ApplicationController
 
   def new
     @note = current_user.notes.new
+    @note.build_version
   end
 
   def create

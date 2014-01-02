@@ -1,7 +1,7 @@
 .row
   .col-xs-12
     - @notes.each do |note|
-      .panel-detail= note.current.created_at.strftime("%B %e")
+      .panel-detail= note.created_at.strftime("%B %e")
       .panel-list-item
         %h4.panel-title= link_to note.name, note_path(note)
 

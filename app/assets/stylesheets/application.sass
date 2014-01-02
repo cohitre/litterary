@@ -3,7 +3,6 @@ a
 
 .panel-title
   padding: 0
-  margin: 0 0 8px
   font-size: 25px
   a
     color: inherit
@@ -34,6 +33,9 @@ footer
   border-width: 0
   font-family: "Lato", Helvetica, Arial, sans-serif
   font-size: 16px
+  white-space: pre-wrap
+  word-break: normal
+  word-wrap: normal
 
 #document
   position: relative
@@ -71,3 +73,45 @@ footer
 
 .highlight-live
   background-color: #FFFBCC
+
+.form-control-title, .form-control-body
+  display: block
+  font-family: "Lato", Helvetica, Arial, sans-serif
+  outline: none
+  padding: 0
+  width: 100%
+
+.form-control-title
+  color: #34495e
+  font-size: 25px
+  font-weight: 700
+  line-height: 1.1
+  margin: -5px 0 -4px
+  padding: 4px 0
+  border-style: none
+  background-color: #fafafa
+
+.form-control-body
+  color: rgb(52, 73, 94)
+  background-color: #fafafa
+  border: 1px solid #f0f0f0
+  font-size: 16px
+  line-height: 1.72222
+  padding: 7px
+
+.calendar
+  display: block
+  margin-bottom: 10px
+  padding: 5px
+  text-align: center
+  &:hover
+    color: #333
+  .calendar-number
+    font-weight: bold
+    font-size: 26px
+    vertical-align: middle
+
+.calendar-current
+  min-height: 57px
+  line-height: 57px
+  padding: 0

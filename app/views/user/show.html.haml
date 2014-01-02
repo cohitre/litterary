@@ -12,4 +12,4 @@
     - @user.notes.each do |note|
       .panel-list-item
         %h4.panel-title= link_to note.name, note_path(note)
-        .panel-detail Current version: #{time_ago_in_words note.current.created_at} ago
+        .panel-detail Current version: #{time_ago_in_words note.version.created_at} ago

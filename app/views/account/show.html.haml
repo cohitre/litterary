@@ -1,10 +1,18 @@
 .row
-  .col-xs-2
-    = link_to 'Create Document', new_note_path, class: "btn btn-primary"
-  .col-xs-10
-    - if @user.description?
-      = safe_simple_format(@user.description)
-    - @user.notes.each do |note|
+  .col-sm-1
+    %a.calendar.palette.palette-silver.calendar-current(href="/week/1")
+      %span.calendar-number.fui-new
+
+  .col-sm-11
+    .panel-list-item
+      %h4.panel-title= link_to "The dagger of anustron", edit_note_path(3)
+
+- @user.notes.each do |note|
+  .row
+    .col-sm-1
+      %a.calendar.palette.palette-clouds(href="/week/1")
+        Week
+        %span.calendar-number 1
+    .col-sm-11
       .panel-list-item
         %h4.panel-title= link_to note.name, note_path(note)
-        .panel-detail Current version: #{time_ago_in_words note.current.created_at} ago

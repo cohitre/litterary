@@ -1,10 +1,14 @@
-.form-group
-  = f.label :name
-  = f.text_field :name, class: "form-control"
+.row
+  .col-xs-2
+    = f.button 'Save', class: 'btn btn-primary btn-block'
+  .col-xs-10
+    .panel-detail.panel-detail-padded
+      By
+      = link_to @note.user.login, user_path(@note.user.login)
+      - if @note.user.full_name?
+        (#{@note.user.full_name})
 
-= f.fields_for :current do |v|
-  .form-group
-    = v.label :body
-    = v.text_area :body, class: "form-control"
-
-= f.save 'Save'
+    = f.text_field :name, class: "form-control-title"
+    %hr
+    = f.fields_for :version, include_id: false do |v|
+      = v.text_area :body, class: "form-control-body"

@@ -3,26 +3,14 @@
     - if @note.user == current_user
       = link_to 'Edit', edit_note_path(@note), class: "btn btn-primary btn-block"
 
-    %div(ng-repeat="citation in activeCitations")
+    %div(ng-repeat="citation in citations")
       %p {{citation.comment}}
 
   .col-xs-10
-    %h3.panel-title= @note.name
-    .panel-detail.panel-detail.padded
+    .panel-detail.panel-detail-padded
       By
       = link_to @note.user.login, user_path(@note.user.login)
       - if @note.user.full_name?
         (#{@note.user.full_name})
-    .panel-detail.panel-detail-padded
-      Updated #{time_ago_in_words @note.current.created_at} ago
-    %hr
-    #document
-      %pre.pre-simple(ng-bind-html="getDocumentHtml()")
-      %form.form.pop.pop-top.range-comment-form(name="citationForm" ng-submit="submitComment()" ng-show="hasActiveHighlight()" range-comment-form)
-        %input(type="hidden" ng-model="citation.range.start")
-        %input(type="hidden" ng-model="citation.range.end")
-        .form-group
-          %textarea.form-control(ng-model="citation.comment" class="form-control")
-        .form-action
-          %button.btn.btn-primary(type="submit") Comment
-          %a.btn.btn-link(ng-click="cancelRangeComment()") Cancel
+
+    #document= render 'page'

@@ -1,0 +1,12 @@
+%h3.panel-title= @note.name
+%hr
+%pre.pre-simple(ng-bind-html="getDocumentHtml()")
+
+%form.form.pop.pop-top.range-comment-form(name="citationForm" ng-submit="submitComment()" ng-show="hasActiveHighlight()" range-comment-form)
+  %input(type="hidden" ng-model="citation.range.start")
+  %input(type="hidden" ng-model="citation.range.end")
+  .form-group
+    %textarea.form-control(ng-model="citation.comment" class="form-control")
+  .form-action
+    %button.btn.btn-primary(type="submit") Comment
+    %a.btn.btn-link(ng-click="cancelRangeComment()") Cancel

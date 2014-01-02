@@ -1,3 +1,2 @@
-#main-content.editor
-  = form_for @note, :url => note_path(@note) do |f|
-    = render :partial => 'form', :locals => {:f => f}
+= form_for @note, :url => note_path(@note) do |f|
+  = render 'form', f: f
