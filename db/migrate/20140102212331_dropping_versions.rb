@@ -1,4 +1,7 @@
 class DroppingVersions < ActiveRecord::Migration
+  class Version < ActiveRecord::Base
+  end
+
   class Note < ActiveRecord::Base
     has_many :versions
   end
