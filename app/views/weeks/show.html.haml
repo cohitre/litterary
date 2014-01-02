@@ -1,0 +1,10 @@
+.row
+  .col-sm-1
+    %a.calendar.palette.palette-clouds{href: week_path(@week)}
+      Week
+      %span.calendar-number= @week.id
+
+  .col-sm-11
+    - @week.notes.each do |note|
+      .panel-list-item
+        %h4.panel-title= link_to note.name, note_path(note)

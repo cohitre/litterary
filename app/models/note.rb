@@ -5,13 +5,6 @@ class Note < ActiveRecord::Base
   has_many :citations, :through => :versions
   has_many :note_comments
   has_many :comments, :through => :note_comments
-  has_one :version
 
-  attr_accessible :name, :version_attributes
-
-  accepts_nested_attributes_for :version
-
-  def body
-    version.body
-  end
+  attr_accessible :name, :body
 end

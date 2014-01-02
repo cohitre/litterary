@@ -9,6 +9,10 @@ Litterary::Application.routes.draw do
 
   root to: 'general#index'
 
+  get "/weeks/draft" => "notes#edit", as: :draft
+  get "/weeks" => "weeks#index", as: :weeks
+  get "/weeks/:id" => "weeks#show", as: :week
+
   resource :account, controller: 'account', only: [:show, :edit, :update]
   resources :users, controller: "user", only: [:show]
   resources :notes do

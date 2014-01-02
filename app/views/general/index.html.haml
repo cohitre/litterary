@@ -7,5 +7,4 @@
       %span.calendar-number= @week.id
   .col-sm-11
     - @week.notes.each do |note|
-      .panel-list-item
-        %h4.panel-title= link_to note.name, note_path(note)
+      = NotesIndexItemStilt.new(note: note).to_html

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140102185651) do
+ActiveRecord::Schema.define(:version => 20140102212331) do
 
   create_table "citations", :force => true do |t|
     t.integer  "version_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20140102185651) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "week_id"
+    t.text     "body"
   end
 
   create_table "users", :force => true do |t|
@@ -61,15 +62,6 @@ ActiveRecord::Schema.define(:version => 20140102185651) do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
-
-  create_table "versions", :force => true do |t|
-    t.text     "body"
-    t.integer  "note_id"
-    t.integer  "user_id"
-    t.boolean  "deleted"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "weeks", :force => true do |t|
     t.datetime "publishing_date"

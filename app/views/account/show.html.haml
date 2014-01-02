@@ -5,7 +5,10 @@
 
   .col-sm-11
     .panel-list-item
-      %h4.panel-title= link_to "The dagger of anustron", edit_note_path(3)
+      - if @user.draft?
+        %h4.panel-title= link_to @user.draft.name, draft_path
+      - else
+        %h4.panel-title= link_to "Start", draft_path
 
 - @user.notes.each do |note|
   .row

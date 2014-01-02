@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :password, :password_confirmation, :remember_me, :login
+
+  has_one :draft, conditions: { week_id: nil }, class_name: "Note"
   has_many :notes
   has_many :citations
 
@@ -52,6 +54,10 @@ class User < ActiveRecord::Base
     fields.push(name) if name?
     fields.push(lastname) if lastname?
     fields.join(" ")
+  end
+
+  def draft?
+    !self.draft.nil?
   end
 
   protected
