@@ -3,11 +3,22 @@ angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "
     hasNote: ->
       @body?
 
+    getCitation: (id) ->
+      cs = for citation in @citations when citation.id == id
+        citation
+      cs[0]
+
     getNote: (noteId) ->
       NotesService.show(noteId).then (note) =>
         @body = aString(note.body)
         @citations = note.citations
         @
+
+    addCitation: (citation) ->
+      a = @range(citation.range.start, citation.range.end)
+        .pushAttr("citation_ids", citation.id)
+        .addClass("highlight")
+      @
 
     highlight: (start, end) ->
       @range(start, end).addClass "highlight"
@@ -60,15 +71,34 @@ angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "
   link: (scope, element, attributes) ->
     angular.extend scope, ScopeExtensions
     noteId = parseInt(attributes.noteId)
+
+    scope.createHighlight = (citation) ->
+      NotesService.citation(noteId, citation).then (cit) ->
+        scope.addCitation(cit)
+
     scope.getNote(noteId).then (note) ->
       for citation in note.citations
-        scope.highlight(citation.range.start, citation.range.end)
+        scope.addCitation(citation)
 
     selectableBlock = new SelectableTextBlock(element.find("pre"))
     selectableBlock.select (range) ->
       scope.$apply ->
         scope.focusActiveHighlight(range.start, range.end)
       scope.clearSelection()
+
+    scope.activeCitations = []
+
+    element.on "mouseover", "span", (event) ->
+      citations = ($(event.target).attr("citation_ids") || "").split(/\s+/)
+      citations = for id in citations when id.length > 0
+        parseInt id
+      scope.$apply ->
+        scope.activeCitations = for id in citations
+          scope.getCitation(id)
+
+    element.on "mouseout", "span", (event) ->
+      scope.$apply ->
+        scope.activeCitations = []
 
     scope.getLiveHighlight = ->
       element.find("pre .highlight-live")

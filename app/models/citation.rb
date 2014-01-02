@@ -6,6 +6,7 @@ class Citation < ActiveRecord::Base
 
   def to_json
     {
+      id: self.id,
       comment: message,
       range: {
         start: range_begin,

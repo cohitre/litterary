@@ -3,6 +3,9 @@
     - if @note.user == current_user
       = link_to 'Edit', edit_note_path(@note), class: "btn btn-primary btn-block"
 
+    %div(ng-repeat="citation in activeCitations")
+      %p {{citation.comment}}
+
   .col-xs-10
     %h3.panel-title= @note.name
     .panel-detail.panel-detail.padded

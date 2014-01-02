@@ -47,12 +47,16 @@ _.extend = function (main, obj) {
   }
 };
 
+_.isNumber = function (obj) {
+  return typeof obj == "number";
+};
+
 _.isString = function (obj) {
   return Object.prototype.toString.call(obj) == '[object String]';
 }
 
 _.isObject = function (obj) {
-  return obj == new Object(obj);
+  return obj === new Object(obj);
 };
 
 _.isArray = function (obj) {
@@ -62,7 +66,7 @@ _.isArray = function (obj) {
 _.clone = function (obj) {
   var result = {};
 
-  if (obj === undefined || obj === null || _.isString(obj) || !_.isObject(obj)) {
+  if (obj === undefined || obj === null || _.isNumber(obj) || _.isString(obj) || !_.isObject(obj)) {
     return obj;
   }
   else if (_.isArray(obj)) {
@@ -204,6 +208,13 @@ StringRange.prototype.css = function (name, val) {
   return this;
 };
 
+StringRange.prototype.pushAttr = function (name, val) {
+  var array = this.attr(name) || [];
+  array.push(val);
+  this.attr(name, array);
+  return this;
+};
+
 StringRange.prototype.attr = function (name, val) {
   if (arguments.length > 1) {
     this.attributes[name] = val;
@@ -261,7 +272,7 @@ RangesList.prototype.get = function (i) {
   return this.ranges[i];
 };
 
-_.each("css attr addClass removeClass".split(" "), function (i, name) {
+_.each("css attr pushAttr addClass removeClass".split(" "), function (i, name) {
   RangesList.prototype[name] = function () {
     _.eachApply(this.ranges, name, arguments);
     return this;

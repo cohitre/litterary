@@ -17,7 +17,6 @@ Litterary::Application.routes.draw do
   end
 
   get "/api/v1/notes/:note_id" => "api/v1/notes#show"
-
-#  post "/api/v1/notes/:note_id/citations" => "NoteCitations#create"
+  post "/api/v1/notes/:note_id/citations" => "note_citations#create"
 #  get "/api/v1/notes/:note_id/citations" => "NoteCitations#index"
 end
