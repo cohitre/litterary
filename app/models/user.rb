@@ -10,10 +10,6 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :citations
 
-  has_many :version
-
-  has_many :note_comments
-
   validate :login,
     format: /\A[A-Za-z0-9_]*\Z/,
     uniqueness: {

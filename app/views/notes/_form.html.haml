@@ -10,5 +10,4 @@
 
     = f.text_field :name, class: "form-control-title"
     %hr
-    = f.fields_for :version, include_id: false do |v|
-      = v.text_area :body, class: "form-control-body"
+    = f.text_area :body, class: "form-control-body"
