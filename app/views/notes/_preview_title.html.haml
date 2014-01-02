@@ -1,7 +1,0 @@
-- if @note.name.blank?
-  %i This document does not have a name.
-- else
-  = @note.name
-
-- if @note.version
-  %span{:style=>'font-size:12px'}= @note.version.updated_at.strftime("%m/%d %I:%M%p")
