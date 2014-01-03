@@ -1,8 +1,8 @@
 .row
   .col-sm-2
-    .palette.palette-belize-hole.calendar
-      %span.calendar-number 5
-      Weeks Streak!
+    .calendar.palette.palette-clouds
+      %span.calendar-number 0
+      Weeks Streak
 
   .col-sm-10
     .row
@@ -12,12 +12,10 @@
 
       .col-sm-9
         .panel-list-item
-          - if @user.draft? && @user.draft.name?
+          - if @user.draft.name?
             %h4.panel-title= link_to @user.draft.name, draft_path
-          - elsif @user.draft?
-            %h4.panel-title= link_to "<em>Untitled</em>".html_safe, draft_path
           - else
-            %h4.panel-title= link_to "<em>New Post</em>".html_safe, draft_path
+            %h4.panel-title= link_to "<em>Untitled</em>".html_safe, draft_path
 
     - @user.notes.each do |note|
       .row

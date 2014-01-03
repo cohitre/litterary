@@ -12,13 +12,6 @@ class NotesController < ApplicationController
   end
 
   def create
-    if current_user.draft?
-      @note = current_user.draft
-    else
-      @note = current_user.build_draft
-    end
-    @note.attributes = params[:note]
-    @note.save!
     redirect_to note_url(@note)
   end
 

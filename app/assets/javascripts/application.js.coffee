@@ -4,7 +4,6 @@
 #= require "aString"
 #= require_tree "./lib"
 #= require_self
-#= require_tree "./controllers"
 #= require_tree "./directives"
 #= require_tree "./services"
 

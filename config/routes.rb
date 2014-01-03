@@ -15,12 +15,13 @@ Litterary::Application.routes.draw do
 
   resource :account, controller: 'account', only: [:show, :edit, :update]
   resources :users, controller: "user", only: [:show]
-  resources :notes, except: [:index, :new, :update] do
-    resources :comments, :only => [:create]
-    resources :citations, :only => [:create, :new]
-  end
 
-  get "/api/v1/notes/:note_id" => "api/v1/notes#show"
-  post "/api/v1/notes/:note_id/citations" => "note_citations#create"
-#  get "/api/v1/notes/:note_id/citations" => "NoteCitations#index"
+  resources :notes, only: [:show, :delete]
+
+  scope "api/v1/notes" do
+    get "draft" => "api/v1/notes#draft"
+    get ":note_id" => "api/v1/notes#show"
+    post "" => "api/v1/notes#update"
+    post ":note_id/citations" => "api/v1/notes#create_citation"
+  end
 end

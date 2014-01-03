@@ -8,6 +8,18 @@ class Note < ActiveRecord::Base
 
   def body
     t = super || ""
-    t.gsub /\r/, " "
+    t.gsub "\r", " "
+  end
+
+  def published?
+    week? && week.published?
+  end
+
+  def to_json(options={})
+    {
+      name: self.name,
+      body: self.body,
+      citations: self.citations.map(&:to_json)
+    }
   end
 end

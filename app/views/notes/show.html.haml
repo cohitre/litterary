@@ -1,16 +1,18 @@
-.row{reviewer: true, "note-id" => @note.id}
-  .col-xs-2
-    - if @note.user == current_user
-      = link_to 'Edit', edit_note_path(@note), class: "btn btn-primary btn-block"
+%div{reviewer: true, "note-id" => @note.id}
+  .row
+    .col-xs-2
 
-    %div(ng-repeat="citation in citations")
-      %p {{citation.comment}}
-
-  .col-xs-10
-    .panel-detail.panel-detail-padded
-      By
-      = link_to @note.user.login, user_path(@note.user.login)
-      - if @note.user.full_name?
-        (#{@note.user.full_name})
-
-    #document= render 'page'
+    .col-xs-10
+      .panel-detail.panel-detail-padded
+        By
+        = link_to @note.user.login, user_path(@note.user.login)
+        - if @note.user.full_name?
+          (#{@note.user.full_name})
+      %h3.panel-title= @note.name
+      %hr
+  .row
+    .col-xs-2
+      %div(ng-repeat="citation in citations")
+        %p {{citation.comment}}
+    .col-xs-10
+      #document= render 'page'

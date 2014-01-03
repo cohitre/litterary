@@ -1,2 +1,15 @@
-= form_for @note, url: notes_path(), html: { method: 'post' } do |f|
-  = render 'form', f: f
+%form(ng-submit="save(note)" name="noteForm" litterary-editor)
+  .row
+    .col-xs-2
+      %button.btn.btn-primary.btn-block(type="submit") {{getSaveButtonText()}}
+      .panel-detail Last saved: {{getLastSavedAtText()}}
+    .col-xs-10
+      .panel-detail.panel-detail-padded
+        By
+        = link_to @note.user.login, user_path(@note.user.login)
+      %input.form-control-title(type="text" name="note[name]" ng-model="note.name")
+      %hr
+  .row
+    .col-xs-2
+    .col-xs-10
+      %textarea.form-control-body(name="note[body]" ng-model="note.body")
