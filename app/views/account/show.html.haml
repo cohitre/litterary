@@ -17,7 +17,7 @@
           - else
             %h4.panel-title= link_to "<em>Untitled</em>".html_safe, draft_path
 
-    - @user.notes.each do |note|
+    - @user.notes.published.each do |note|
       .row
         .col-sm-1
           %a.calendar.palette.palette-clouds{href: week_path(note.week)}

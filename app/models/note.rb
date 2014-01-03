@@ -6,6 +6,9 @@ class Note < ActiveRecord::Base
 
   attr_accessible :name, :body
 
+  scope :published, where("week_id IS NOT NULL")
+  scope :draft, where(week_id: nil)
+
   def body
     t = super || ""
     t.gsub "\r", " "

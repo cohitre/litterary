@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :password, :password_confirmation, :login
 
-  has_one :draft, conditions: { week_id: nil }, class_name: "Note"
-  has_many :notes, conditions: ["week_id IS NOT NULL"]
+  has_many :notes
   has_many :citations
 
   validate :login,
@@ -36,11 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def draft
-    if self.draft?
-      super
-    else
-      self.build_draft
-    end
+    self.notes.draft.first || self.notes.build
   end
 
   protected
