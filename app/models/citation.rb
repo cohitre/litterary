@@ -1,5 +1,6 @@
 class Citation < ActiveRecord::Base
   belongs_to :user
+  belongs_to :note
 
   attr_accessible :message, :range_begin, :range_end, :user
 

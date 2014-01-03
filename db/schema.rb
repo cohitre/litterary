@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140102212721) do
+ActiveRecord::Schema.define(:version => 20140103053319) do
 
   create_table "citations", :force => true do |t|
-    t.integer  "version_id"
     t.string   "message"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "range_end"
     t.integer  "range_begin"
+    t.integer  "note_id",     :default => 1, :null => false
   end
 
   create_table "notes", :force => true do |t|
