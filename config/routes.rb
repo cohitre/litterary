@@ -18,10 +18,10 @@ Litterary::Application.routes.draw do
 
   resources :notes, only: [:show, :delete]
 
-  scope "api/v1/notes" do
-    get "draft" => "api/v1/notes#draft"
-    get ":note_id" => "api/v1/notes#show"
-    post "" => "api/v1/notes#update"
-    post ":note_id/citations" => "api/v1/notes#create_citation"
+  scope "api/v1/notes", module: "api/v1/notes" do
+    get "draft"
+    get ":note_id", action: "show"
+    post "", action: "update"
+    post ":note_id/citations", action: "create_citation"
   end
 end
