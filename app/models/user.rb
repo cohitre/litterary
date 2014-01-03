@@ -37,9 +37,9 @@ class User < ActiveRecord::Base
 
   def draft
     if self.draft?
-      self.build_draft
-    else
       super
+    else
+      self.build_draft
     end
   end
 
