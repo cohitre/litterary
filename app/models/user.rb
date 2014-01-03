@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   attr_accessible :password, :password_confirmation, :remember_me, :login
 
   has_one :draft, conditions: { week_id: nil }, class_name: "Note"
-  has_many :notes
+  has_many :notes, conditions: ["week_id IS NOT NULL"]
   has_many :citations
 
   validate :login,

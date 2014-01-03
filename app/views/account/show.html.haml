@@ -1,20 +1,29 @@
 .row
-  .col-sm-1
-    %a.calendar.palette.palette-silver.calendar-current(href="/week/1")
-      %span.calendar-number.fui-new
+  .col-sm-2
+    .palette.palette-belize-hole.calendar
+      %span.calendar-number 5
+      Weeks Streak!
 
-  .col-sm-11
-    .panel-list-item
-      - if @user.draft?
-        %h4.panel-title= link_to @user.draft.name, draft_path
-      - else
-        %h4.panel-title= link_to "Start", draft_path
+  .col-sm-10
+    .row
+      .col-sm-1
+        %a.calendar.palette.palette-silver.calendar-current(href=draft_path)
+          %span.calendar-number.fui-new
 
-- @user.notes.each do |note|
-  .row
-    .col-sm-1
-      %a.calendar.palette.palette-clouds(href="/week/1")
-        Week
-        %span.calendar-number 1
-    .col-sm-11
-      = NotesIndexItemStilt.new(note: note).to_html
+      .col-sm-9
+        .panel-list-item
+          - if @user.draft? && @user.draft.name?
+            %h4.panel-title= link_to @user.draft.name, draft_path
+          - elsif @user.draft?
+            %h4.panel-title= link_to "<em>Untitled</em>".html_safe, draft_path
+          - else
+            %h4.panel-title= link_to "<em>New Post</em>".html_safe, draft_path
+
+    - @user.notes.each do |note|
+      .row
+        .col-sm-1
+          %a.calendar.palette.palette-clouds{href: week_path(note.week)}
+            Week
+            %span.calendar-number= note.week.id
+        .col-sm-9
+          = NotesIndexItemStilt.new(note: note).to_html

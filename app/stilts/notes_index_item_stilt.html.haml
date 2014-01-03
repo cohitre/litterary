@@ -1,3 +1,8 @@
 .panel-list-item
   %h4.panel-title
-    %a(href=href)= title
+    %a(href=href)
+      - if title?
+        = title
+      - else
+        %em= title
+

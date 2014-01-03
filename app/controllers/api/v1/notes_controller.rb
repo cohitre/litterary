@@ -3,7 +3,7 @@ class Api::V1::NotesController < ApplicationController
     @note = Note.find params[:note_id]
     render json: {
       body: @note.body.gsub(/\r/," "),
-      citations: [] #@note.citations.map(&:to_json)
+      citations: [] # @note.citations.map(&:to_json)
     }
   end
 end

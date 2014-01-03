@@ -15,7 +15,7 @@ Litterary::Application.routes.draw do
 
   resource :account, controller: 'account', only: [:show, :edit, :update]
   resources :users, controller: "user", only: [:show]
-  resources :notes do
+  resources :notes, except: [:index, :new, :update] do
     resources :comments, :only => [:create]
     resources :citations, :only => [:create, :new]
   end

@@ -1,13 +1,9 @@
 class NotesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :find_note, :only => [:update, :destroy, :delete]
 
   def show
     @note = Note.find(params[:id])
-  end
-
-  def index
-    @notes = Note.all
   end
 
   def new
@@ -17,10 +13,12 @@ class NotesController < ApplicationController
 
   def create
     if current_user.draft?
-      @note = current_user.draft.update_attributes params[:note]
+      @note = current_user.draft
     else
-      @note = current_user.draft.create(params[:note])
+      @note = current_user.build_draft
     end
+    @note.attributes = params[:note]
+    @note.save!
     redirect_to note_url(@note)
   end
 

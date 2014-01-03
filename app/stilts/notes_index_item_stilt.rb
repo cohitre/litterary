@@ -6,6 +6,10 @@ class NotesIndexItemStilt < Stilts::Base
     url_helpers.note_path(@note)
   end
 
+  def title?
+    @note.name?
+  end
+
   def title
     @note.name
   end
