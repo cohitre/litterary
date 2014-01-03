@@ -1,0 +1,164 @@
+/* line 1, ../../app/assets/stylesheets/application.sass */
+a {
+  cursor: pointer;
+}
+
+/* line 4, ../../app/assets/stylesheets/application.sass */
+.panel-title {
+  padding: 0;
+  font-size: 25px;
+}
+/* line 7, ../../app/assets/stylesheets/application.sass */
+.panel-title a {
+  color: inherit;
+}
+
+/* line 10, ../../app/assets/stylesheets/application.sass */
+.panel-list-item {
+  margin-bottom: 20px;
+}
+
+/* line 13, ../../app/assets/stylesheets/application.sass */
+.panel-detail {
+  font-size: 13px;
+  line-height: 13px;
+  color: #c0c1c2;
+  font-weight: lighter;
+}
+
+/* line 19, ../../app/assets/stylesheets/application.sass */
+.panel-detail.panel-detail-padded {
+  margin: 7px 0;
+}
+
+/* line 22, ../../app/assets/stylesheets/application.sass */
+footer {
+  background-color: transparent;
+  color: #dadfe2;
+  font-weight: lighter;
+  padding: 40px 0;
+}
+/* line 28, ../../app/assets/stylesheets/application.sass */
+footer a {
+  color: #dadfe2;
+  text-decoration: underline;
+}
+
+/* line 32, ../../app/assets/stylesheets/application.sass */
+.pre-simple {
+  border-width: 0;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+/* line 40, ../../app/assets/stylesheets/application.sass */
+#document {
+  position: relative;
+}
+
+/* line 43, ../../app/assets/stylesheets/application.sass */
+.range-comment-form {
+  position: absolute;
+  width: 400px;
+}
+
+/* line 47, ../../app/assets/stylesheets/application.sass */
+.pop {
+  background-color: #eff0f2;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+/* line 52, ../../app/assets/stylesheets/application.sass */
+.pop:before {
+  content: "";
+  border-style: solid;
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
+/* line 59, ../../app/assets/stylesheets/application.sass */
+.pop-bottom:before {
+  border-width: 0 9px 9px 9px;
+  border-color: transparent transparent #eff0f2 transparent;
+  left: 23px;
+  top: -9px;
+}
+
+/* line 65, ../../app/assets/stylesheets/application.sass */
+.pop-top:before {
+  border-width: 9px 9px 0 9px;
+  border-color: #eff0f2 transparent transparent transparent;
+  left: 23px;
+  bottom: -9px;
+}
+
+/* line 71, ../../app/assets/stylesheets/application.sass */
+.highlight {
+  text-decoration: underline;
+}
+
+/* line 74, ../../app/assets/stylesheets/application.sass */
+.highlight-live {
+  background-color: #fffbcc;
+}
+
+/* line 77, ../../app/assets/stylesheets/application.sass */
+.form-control-title, .form-control-body {
+  display: block;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 84, ../../app/assets/stylesheets/application.sass */
+.form-control-title {
+  color: #34495e;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: -5px 0 -4px;
+  padding: 4px 0;
+  border-style: none;
+  background-color: #fafafa;
+}
+
+/* line 94, ../../app/assets/stylesheets/application.sass */
+.form-control-body {
+  color: #34495e;
+  background-color: #fafafa;
+  border: 1px solid #f0f0f0;
+  font-size: 16px;
+  line-height: 1.72222;
+  padding: 7px;
+}
+
+/* line 102, ../../app/assets/stylesheets/application.sass */
+.calendar {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
+}
+/* line 107, ../../app/assets/stylesheets/application.sass */
+.calendar:hover {
+  color: #333333;
+}
+/* line 109, ../../app/assets/stylesheets/application.sass */
+.calendar .calendar-number {
+  font-weight: bold;
+  font-size: 26px;
+  vertical-align: middle;
+}
+
+/* line 114, ../../app/assets/stylesheets/application.sass */
+.calendar-current {
+  min-height: 57px;
+  line-height: 57px;
+  padding: 0;
+}
