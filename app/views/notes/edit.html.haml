@@ -3,6 +3,13 @@
     .col-xs-2
       %button.btn.btn-primary.btn-block(type="submit") {{getSaveButtonText()}}
       .panel-detail Last saved: {{getLastSavedAtText()}}
+
+      %label.checkbox(styled-checkbox ng-class="{ checked: note.deadline }")
+        %span.icons
+          %span.first-icon.fui-checkbox-unchecked
+          %span.second-icon.fui-checkbox-checked
+          %input(type="checkbox" ng-model="note.deadline" name="note[deadline]" value="1")
+        This makes the deadline!
     .col-xs-10
       .panel-detail.panel-detail-padded
         By
@@ -12,4 +19,4 @@
   .row
     .col-xs-2
     .col-xs-10
-      %textarea.form-control-body(name="note[body]" ng-model="note.body")
+      %textarea.form-control-body(name="note[body]" ng-model="note.body" auto-resize)

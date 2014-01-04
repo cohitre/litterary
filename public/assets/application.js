@@ -29764,6 +29764,26 @@ return aString;
 }).call(this);
 (function() {
 
+  angular.module("Litterary").directive("autoResize", function() {
+    return function(scope, element, attributes) {
+      var offset, resize, t;
+      t = element.get(0);
+      offset = t.offsetHeight;
+      resize = function() {
+        t.style.height = "auto";
+        if (element.height() < t.scrollHeight) {
+          return t.style.height = t.scrollHeight + "px";
+        }
+      };
+      return element.bind("input", function() {
+        return resize();
+      });
+    };
+  });
+
+}).call(this);
+(function() {
+
   angular.module("Litterary").directive("litteraryEditor", [
     "NotesService", function(NotesService) {
       var ScopeExtensions;

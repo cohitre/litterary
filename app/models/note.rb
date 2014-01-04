@@ -4,7 +4,7 @@ class Note < ActiveRecord::Base
 
   has_many :citations
 
-  attr_accessible :name, :body
+  attr_accessible :name, :body, :deadline
 
   scope :published, where("week_id IS NOT NULL")
   scope :draft, where(week_id: nil)
@@ -20,6 +20,7 @@ class Note < ActiveRecord::Base
 
   def to_json(options={})
     {
+      deadline: self.deadline?,
       name: self.name,
       body: self.body,
       citations: self.citations.map(&:to_json)
