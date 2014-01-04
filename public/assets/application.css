@@ -162,3 +162,8 @@ footer a {
   line-height: 57px;
   padding: 0;
 }
+
+/* line 119, ../../app/assets/stylesheets/application.sass */
+.note-index-item {
+  min-height: 45px;
+}
