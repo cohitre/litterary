@@ -3,7 +3,7 @@ class AccountController < ApplicationController
 
   def show
     @user = current_user
-    @notes = @user.notes.find(:all , :order => 'created_at DESC' , :limit => 5 )
+    @weeks = @user.weeks.order("created_at DESC")
   end
 
   def edit

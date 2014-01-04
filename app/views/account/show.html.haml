@@ -17,11 +17,12 @@
           - else
             %h4.panel-title= link_to "<em>Untitled</em>".html_safe, draft_path
 
-    - @user.notes.published.each do |note|
+    - @weeks.each do |week|
       .row
         .col-sm-1
-          %a.calendar.palette.palette-clouds{href: week_path(note.week)}
+          %a.calendar.palette.palette-clouds{href: week_path(week)}
             Week
-            %span.calendar-number= note.week.id
+            %span.calendar-number= week.id
         .col-sm-9
-          = NotesIndexItemStilt.new(note: note).to_html
+          - week.notes.where(user_id: @user.id).each do |note|
+            = NotesIndexItemStilt.new(note: note).to_html
