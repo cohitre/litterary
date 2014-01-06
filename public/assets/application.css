@@ -108,6 +108,11 @@ footer a {
 }
 
 /* line 77, ../../app/assets/stylesheets/application.sass */
+.highlight-hover {
+  background-color: black;
+}
+
+/* line 80, ../../app/assets/stylesheets/application.sass */
 .form-control-title, .form-control-body {
   display: block;
   font-family: "Lato", Helvetica, Arial, sans-serif;
@@ -116,7 +121,7 @@ footer a {
   width: 100%;
 }
 
-/* line 84, ../../app/assets/stylesheets/application.sass */
+/* line 87, ../../app/assets/stylesheets/application.sass */
 .form-control-title {
   color: #34495e;
   font-size: 25px;
@@ -128,7 +133,7 @@ footer a {
   background-color: #fafafa;
 }
 
-/* line 94, ../../app/assets/stylesheets/application.sass */
+/* line 97, ../../app/assets/stylesheets/application.sass */
 .form-control-body {
   color: #34495e;
   background-color: #fafafa;
@@ -138,32 +143,32 @@ footer a {
   padding: 7px;
 }
 
-/* line 102, ../../app/assets/stylesheets/application.sass */
+/* line 105, ../../app/assets/stylesheets/application.sass */
 .calendar {
   display: block;
   margin-bottom: 10px;
   padding: 5px;
   text-align: center;
 }
-/* line 107, ../../app/assets/stylesheets/application.sass */
+/* line 110, ../../app/assets/stylesheets/application.sass */
 .calendar:hover {
   color: #333333;
 }
-/* line 109, ../../app/assets/stylesheets/application.sass */
+/* line 112, ../../app/assets/stylesheets/application.sass */
 .calendar .calendar-number {
   font-weight: bold;
   font-size: 26px;
   vertical-align: middle;
 }
 
-/* line 114, ../../app/assets/stylesheets/application.sass */
+/* line 117, ../../app/assets/stylesheets/application.sass */
 .calendar-current {
   min-height: 57px;
   line-height: 57px;
   padding: 0;
 }
 
-/* line 119, ../../app/assets/stylesheets/application.sass */
+/* line 122, ../../app/assets/stylesheets/application.sass */
 .note-index-item {
   min-height: 45px;
 }

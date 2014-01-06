@@ -12,7 +12,7 @@
       %hr
   .row
     .col-xs-2
-      %div(ng-repeat="citation in citations")
+      %div(ng-repeat="citation in getSortedCitations()" ng-mouseover="showCitation(citation)" ng-mouseout="hideCitation(citation)")
         %p {{citation.comment}}
     .col-xs-10
       #document= render 'page'

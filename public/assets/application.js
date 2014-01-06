@@ -29871,6 +29871,16 @@ return aString;
         hasNote: function() {
           return this.body != null;
         },
+        showCitation: function(citation) {
+          var range;
+          range = citation.range;
+          return this.range(range.start, range.end).addClass("highlight-hover");
+        },
+        hideCitation: function(citation) {
+          var range;
+          range = citation.range;
+          return this.range(range.start, range.end).removeClass("highlight-hover");
+        },
         getCitation: function(id) {
           var citation, cs;
           cs = (function() {
@@ -29886,6 +29896,21 @@ return aString;
             return _results;
           }).call(this);
           return cs[0];
+        },
+        getSortedCitations: function() {
+          if (this.citations) {
+            return this.citations.slice().sort(function(a, b) {
+              if (a.range.start === b.range.start) {
+                return 0;
+              } else if (a.range.start < b.range.start) {
+                return -1;
+              } else {
+                return 1;
+              }
+            });
+          } else {
+            return [];
+          }
         },
         getNote: function(noteId) {
           var _this = this;

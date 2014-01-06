@@ -3,10 +3,30 @@ angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "
     hasNote: ->
       @body?
 
+    showCitation: (citation) ->
+      range = citation.range
+      @range(range.start, range.end).addClass "highlight-hover"
+
+    hideCitation: (citation) ->
+      range = citation.range
+      @range(range.start, range.end).removeClass "highlight-hover"
+
     getCitation: (id) ->
       cs = for citation in @citations when citation.id == id
         citation
       cs[0]
+
+    getSortedCitations: ->
+      if @citations
+        @citations.slice().sort (a, b) ->
+          if a.range.start == b.range.start
+            return 0
+          else if a.range.start < b.range.start
+            return -1
+          else
+            return 1
+      else
+        []
 
     getNote: (noteId) ->
       NotesService.show(noteId).then (note) =>
