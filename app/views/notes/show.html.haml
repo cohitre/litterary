@@ -1,7 +1,6 @@
 %div{reviewer: true, "note-id" => @note.id}
   .row
     .col-xs-2
-
     .col-xs-10
       .panel-detail.panel-detail-padded
         By
@@ -12,7 +11,6 @@
       %hr
   .row
     .col-xs-2
-      %div(ng-repeat="citation in getSortedCitations()" ng-mouseover="showCitation(citation)" ng-mouseout="hideCitation(citation)")
-        %p {{citation.comment}}
+      #citations(active-comments)
     .col-xs-10
       #document= render 'page'

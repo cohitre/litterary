@@ -1,3 +1,12 @@
+angular.module("Litterary").directive "activeComments", [->
+  template: """
+  <div>
+    <div ng-repeat="citation in activeCitations">
+      {{citation.comment}}
+    </div>
+  </div>
+  """
+]
 angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "$sce", (NotesService, $compile, $sce) ->
   ScopeExtensions =
     hasNote: ->
@@ -16,28 +25,17 @@ angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "
         citation
       cs[0]
 
-    getSortedCitations: ->
-      if @citations
-        @citations.slice().sort (a, b) ->
-          if a.range.start == b.range.start
-            return 0
-          else if a.range.start < b.range.start
-            return -1
-          else
-            return 1
-      else
-        []
-
     getNote: (noteId) ->
       NotesService.show(noteId).then (note) =>
         @body = aString(note.body)
-        @citations = note.citations
-        @
+        @citations = []
+        note
 
     addCitation: (citation) ->
       a = @range(citation.range.start, citation.range.end)
         .pushAttr("citation_ids", citation.id)
         .addClass("highlight")
+      @citations.push(citation)
       @
 
     highlight: (start, end) ->
@@ -104,21 +102,34 @@ angular.module("Litterary").directive "reviewer", ["NotesService", "$compile", "
     selectableBlock.select (range) ->
       scope.$apply ->
         scope.focusActiveHighlight(range.start, range.end)
-      scope.clearSelection()
-
-    scope.activeCitations = []
+        scope.clearSelection()
 
     element.on "mouseover", "span", (event) ->
-      citations = ($(event.target).attr("citation_ids") || "").split(/\s+/)
+      target = $(event.target)
+      cits = $("#citations")
+      offset = target.position()
+
+      citations = (target.attr("citation_ids") || "").split(/\s+/)
       citations = for id in citations when id.length > 0
         parseInt id
+      cits.css(
+        top: offset.top
+        position: "absolute"
+      )
       scope.$apply ->
-        scope.activeCitations = for id in citations
+        active = for id in citations
           scope.getCitation(id)
+        scope.setActiveCitations active
 
     element.on "mouseout", "span", (event) ->
       scope.$apply ->
-        scope.activeCitations = []
+        scope.clearActive()
+
+    scope.setActiveCitations = (citations) ->
+      scope.activeCitations = citations
+
+    scope.clearActive = ->
+      scope.activeCitations = []
 
     scope.getLiveHighlight = ->
       element.find("pre .highlight-live")

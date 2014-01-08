@@ -29864,6 +29864,14 @@ return aString;
 }).call(this);
 (function() {
 
+  angular.module("Litterary").directive("activeComments", [
+    function() {
+      return {
+        template: "<div>\n  <div ng-repeat=\"citation in activeCitations\">\n    {{citation.comment}}\n  </div>\n</div>"
+      };
+    }
+  ]);
+
   angular.module("Litterary").directive("reviewer", [
     "NotesService", "$compile", "$sce", function(NotesService, $compile, $sce) {
       var ScopeExtensions;
@@ -29897,32 +29905,18 @@ return aString;
           }).call(this);
           return cs[0];
         },
-        getSortedCitations: function() {
-          if (this.citations) {
-            return this.citations.slice().sort(function(a, b) {
-              if (a.range.start === b.range.start) {
-                return 0;
-              } else if (a.range.start < b.range.start) {
-                return -1;
-              } else {
-                return 1;
-              }
-            });
-          } else {
-            return [];
-          }
-        },
         getNote: function(noteId) {
           var _this = this;
           return NotesService.show(noteId).then(function(note) {
             _this.body = aString(note.body);
-            _this.citations = note.citations;
-            return _this;
+            _this.citations = [];
+            return note;
           });
         },
         addCitation: function(citation) {
           var a;
           a = this.range(citation.range.start, citation.range.end).pushAttr("citation_ids", citation.id).addClass("highlight");
+          this.citations.push(citation);
           return this;
         },
         highlight: function(start, end) {
@@ -30005,15 +29999,17 @@ return aString;
           });
           selectableBlock = new SelectableTextBlock(element.find("pre"));
           selectableBlock.select(function(range) {
-            scope.$apply(function() {
-              return scope.focusActiveHighlight(range.start, range.end);
+            return scope.$apply(function() {
+              scope.focusActiveHighlight(range.start, range.end);
+              return scope.clearSelection();
             });
-            return scope.clearSelection();
           });
-          scope.activeCitations = [];
           element.on("mouseover", "span", function(event) {
-            var citations, id;
-            citations = ($(event.target).attr("citation_ids") || "").split(/\s+/);
+            var citations, cits, id, offset, target;
+            target = $(event.target);
+            cits = $("#citations");
+            offset = target.position();
+            citations = (target.attr("citation_ids") || "").split(/\s+/);
             citations = (function() {
               var _i, _len, _results;
               _results = [];
@@ -30025,8 +30021,13 @@ return aString;
               }
               return _results;
             })();
+            cits.css({
+              top: offset.top,
+              position: "absolute"
+            });
             return scope.$apply(function() {
-              return scope.activeCitations = (function() {
+              var active;
+              active = (function() {
                 var _i, _len, _results;
                 _results = [];
                 for (_i = 0, _len = citations.length; _i < _len; _i++) {
@@ -30035,13 +30036,20 @@ return aString;
                 }
                 return _results;
               })();
+              return scope.setActiveCitations(active);
             });
           });
           element.on("mouseout", "span", function(event) {
             return scope.$apply(function() {
-              return scope.activeCitations = [];
+              return scope.clearActive();
             });
           });
+          scope.setActiveCitations = function(citations) {
+            return scope.activeCitations = citations;
+          };
+          scope.clearActive = function() {
+            return scope.activeCitations = [];
+          };
           scope.getLiveHighlight = function() {
             return element.find("pre .highlight-live");
           };
