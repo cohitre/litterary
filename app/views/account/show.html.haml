@@ -25,4 +25,4 @@
             %span.calendar-number= week.id
         .col-sm-9
           - week.notes.where(user_id: @user.id).each do |note|
-            = NotesIndexItemStilt.new(note: note).to_html
+            = NotesIndexItemStencil.new(note: note).to_html

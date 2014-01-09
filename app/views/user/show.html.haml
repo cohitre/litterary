@@ -10,4 +10,4 @@
     - if @user.description?
       = safe_simple_format(@user.description)
     - @user.notes.each do |note|
-      = NotesIndexItemStilt.new(note: note).to_html
+      = NotesIndexItemStencil.new(note: note).to_html

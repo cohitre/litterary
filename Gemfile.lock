@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:cohitre/stencil.git
+  revision: c2a96dc0ee976804845ed99f94481756a44fb02e
+  specs:
+    stencil (0.0.1)
+      tilt
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,4 +133,5 @@ DEPENDENCIES
   sass
   sass-rails (~> 3.2.3)
   sqlite3
+  stencil!
   uglifier (>= 1.0.3)
