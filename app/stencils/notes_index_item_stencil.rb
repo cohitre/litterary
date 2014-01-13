@@ -1,6 +1,6 @@
 class NotesIndexItemStencil < Stencil::Base
   needs :note
-  template "app/stencils/notes_index_item_stencil.html.haml"
+  template "notes_index_item_stencil"
 
   def href
     url_helpers = Rails.application.routes.url_helpers
