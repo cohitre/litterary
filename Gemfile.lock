@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:cohitre/stencil.git
-  revision: 0a7e83141244380bed992d54cbe690c15a59da28
+  remote: git://github.com/cohitre/stencil.git
+  revision: a626b88975f135bae4e923c8181a71909ec04c25
   specs:
     stencil (0.0.1)
       tilt

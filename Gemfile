@@ -5,7 +5,7 @@ gem 'rails', '3.2.8'
 gem 'haml'
 gem 'sass'
 
-gem "stencil", git: "git@github.com:cohitre/stencil.git"
+gem "stencil", git: "git://github.com/cohitre/stencil.git"
 
 gem "devise"
 gem "rails_config"
