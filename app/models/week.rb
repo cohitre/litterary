@@ -2,7 +2,7 @@ class Week < ActiveRecord::Base
   has_many :notes
 
   def published?
-    published_at.past?
+    publishing_date.past?
   end
 
   def claim_posts!

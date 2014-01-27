@@ -11,11 +11,7 @@ class Note < ActiveRecord::Base
 
   def body
     t = super || ""
-    t.gsub "\r", " "
-  end
-
-  def published?
-    week? && week.published?
+    t.gsub "\r", ""
   end
 
   def to_json(options={})

@@ -4,7 +4,6 @@
   = form_for @user, :url => account_path, :html => {:multipart => true} do |f|
     .comment
       %h2 Profile Information
-      = f.label_text :name, :size => 30
-      = f.label_text :lastname, :size => 30, :label => 'Last name'
+      = f.label_text :full_name, :size => 30
       = f.label_text_area :description, :rows => 5, :cols => 40
       = f.save('Update')

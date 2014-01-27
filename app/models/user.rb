@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :trackable, :authentication_keys => [:login]
+  devise :database_authenticatable, :registerable, :trackable, authentication_keys: [:login]
 
-  attr_accessible :password, :password_confirmation, :login
+  attr_accessible :password, :password_confirmation, :login, :full_name
 
   has_many :notes
   has_many :citations
@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   validate :login,
     format: /\A[A-Za-z0-9_]*\Z/,
+    presence: true,
     uniqueness: {
       case_sensitive: false
     },
@@ -16,23 +17,12 @@ class User < ActiveRecord::Base
       within: 3..40
     }
 
-  validates_presence_of     :password, :if => :password_required?
+  validates_presence_of :password, :if => :password_required?
   validates_confirmation_of :password, :if => :password_required?
   validates_length_of       :password, :minimum => 3, :allow_blank => true
 
-  def full_name?
-    !full_name.blank?
-  end
-
-  def full_name
-    fields = []
-    fields.push(name) if name?
-    fields.push(lastname) if lastname?
-    fields.join(" ")
-  end
-
   def draft?
-    self.notes.where(week_id: nil).any?
+    self.notes.drafts.any?
   end
 
   def draft
